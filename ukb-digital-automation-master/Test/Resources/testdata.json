@@ -1,0 +1,19 @@
+[
+{
+	"UKB_url_APayment":"account/pay",
+	"subUrl_ASMR":"meterread/submit-meter-read",
+	"UKB_GAQ_url":"gas-and-electricity/energy-quote/site/postcode",
+	"UKB_RegPageurl":"register",
+	"UKB_LoginPageurl":"login",
+	"UKB_Deeplink_ViewBill":"your-account/login?journey=vbill&accountnumber=600583894",
+	"UKB_Deeplink_Renewals":"your-account/login?journey=SSMR&accountnumber=600583894",
+        "UKB_Deeplink_SMR":"your-account/login?journey=SSMR&accountnumber=600583894",
+	"UKB_Deeplink_GSMR":"your-account/login?journey=GSMR&accountnumber=600583894",
+	"UKB_Deeplink_payments":"your-account/login?journey=cpayment&accountnumber=600583894",
+        "UKB_CsaAgenturl1":"https://muhammk1:password@",
+	"UKB_CsaAgenturl2":"Manage-Profile/User-LookUp",
+	"UKB_Cognitologinurl":"your-account/login",
+	"UKB_CognitoAEM":"gas-and-electricity"
+}
+]
+

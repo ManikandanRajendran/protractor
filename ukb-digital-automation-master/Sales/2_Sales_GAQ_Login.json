@@ -1,0 +1,1274 @@
+{
+  "info": {
+    "_postman_id": "93561ca7-cbde-587d-4af2-07716d3dda26",
+    "name": "2_Sales_GAQ_Login",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "8e59984e-18fb-a4bd-f665-5d9d1fb08533",
+      "name": "PricetoQuote",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "fd21a854-4a7e-fb05-f716-3e1fc59912a6",
+          "name": "Login",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "a7c6e9ec-b143-90bd-826e-b10eb7f176ba",
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "postman.setGlobalVariable(\"email\", \"tester52@tester.com\");",
+                      "postman.setGlobalVariable(\"password\", \"password12\");",
+                      "",
+                      ""
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Test responseCode - 200\"] = responseCode.code == \"200\";",
+                      "",
+                      "if (responseCode.code === 200) {",
+                      "    ",
+                      "    var JSESSIONID = postman.getResponseCookie(\"JSESSIONID\").value;",
+                      "    postman.setEnvironmentVariable(\"JSessionid\", JSESSIONID);",
+                      "    ",
+                      "    var response = JSON.parse(responseBody);",
+                      "    var data=response.data;",
+                      "    var attributes= response.data.attributes;",
+                      "    ",
+                      "    tests[\"Test id - me\"] = data['id'] == \"me\";",
+                      "    tests[\"Test type - login-sessions\"] = data['type'] == \"login-sessions\";",
+                      "    tests[\"Test email - \" + attributes['email'] + \" is not null\"] = attributes['email'] !== null;",
+                      "    tests[\"Test last-login-timestamp is not null\"] = attributes['last-login-timestamp'] !== null;",
+                      "    tests[\"Test max-session-inactive-interval - 1200\"] = attributes['max-session-inactive-interval'] == \"1200\";",
+                      "}",
+                      "  ",
+                      "else postman.setNextRequest(null);",
+                      "  ",
+                      "console.log",
+                      "",
+                      "",
+                      "",
+                      "",
+                      "",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Host",
+                    "value": "{{host}}"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "{{origin}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"data\": {\r\n    \"type\": \"login-sessions\",\r\n    \"attributes\": {\r\n      \"email\" : \"{{email}}\",\r\n      \"password\" :  \"{{password}}\"\r\n    }\r\n  }\r\n}"
+                },
+                "url": "{{url}}/login-sessions",
+                "description": "Login"
+              },
+              "response": [
+                {
+                  "id": "a44b54bc-b65c-bd95-cd34-ee495884176f",
+                  "name": "21/08/17",
+                  "originalRequest": {
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": ""
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close",
+                      "name": "Connection",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Encoding",
+                      "value": "gzip",
+                      "name": "Content-Encoding",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "181",
+                      "name": "Content-Length",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/vnd.api+json",
+                      "name": "Content-Type",
+                      "description": ""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 21 Aug 2017 15:46:39 GMT",
+                      "name": "Date",
+                      "description": ""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache/2.2.3 (Red Hat)",
+                      "name": "Server",
+                      "description": ""
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "BGBusiness_lastName=VPP;Path=/;Version=1",
+                      "name": "Set-Cookie",
+                      "description": ""
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "BGBusiness_Title=Mr;Path=/;Version=1",
+                      "name": "Set-Cookie",
+                      "description": ""
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Accept-Encoding,User-Agent",
+                      "name": "Vary",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN",
+                      "name": "X-Frame-Options",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Servlet/2.5 JSP/2.1",
+                      "name": "X-Powered-By",
+                      "description": ""
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "ukbaem"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "VPP"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "Mr"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": true,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "bdlSZh1WC7bpF9nrqY4K9QKbwTPJ0qY8K5vtW1bnm7YGNMybvgty!1064548527"
+                    }
+                  ],
+                  "responseTime": "1351",
+                  "body": "{\"jsonapi\":{\"version\":\"1.0\"},\"data\":{\"id\":\"me\",\"type\":\"login-sessions\",\"attributes\":{\"last-login-timestamp\":\"2017-08-21T17:46:39Z\",\"email\":\"renewalvppqas04@bgdigitaltest.co.uk\",\"max-session-inactive-interval\":1200}}}"
+                }
+              ]
+            },
+            {
+              "_postman_id": "d98976ea-beeb-9351-857f-98a09054649a",
+              "name": "FPP_Users",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                      "",
+                      "if (responseCode.code === 200) {",
+                      "",
+                      "var response = JSON.parse(responseBody);",
+                      "//First Account",
+                      "var attributes = response.data.attributes;",
+                      "var lastName = attributes['last-name'];",
+                      "var title = attributes['title'];",
+                      "var firstName = attributes['first-name'];",
+                      "var emailid = attributes['email'];",
+                      "",
+                      "postman.setGlobalVariable (\"lastName\", lastName);",
+                      "postman.setGlobalVariable (\"title\", title);",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Host",
+                    "value": "{{host}}"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "{{origin}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  },
+                  {
+                    "key": "JSESSIONID",
+                    "value": "{{JSessionid}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": "{{url}}/users/me"
+              },
+              "response": [
+                {
+                  "id": "d4bb039f-43db-4817-9c2d-443b7474b709",
+                  "name": "21/08/17",
+                  "originalRequest": {
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": ""
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close",
+                      "name": "Connection",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Encoding",
+                      "value": "gzip",
+                      "name": "Content-Encoding",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "300",
+                      "name": "Content-Length",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/vnd.api+json",
+                      "name": "Content-Type",
+                      "description": ""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 21 Aug 2017 15:46:53 GMT",
+                      "name": "Date",
+                      "description": ""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache/2.2.3 (Red Hat)",
+                      "name": "Server",
+                      "description": ""
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Accept-Encoding,User-Agent",
+                      "name": "Vary",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN",
+                      "name": "X-Frame-Options",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Servlet/2.5 JSP/2.1",
+                      "name": "X-Powered-By",
+                      "description": ""
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "ukbaem"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "VPP"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "Mr"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": true,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "bdlSZh1WC7bpF9nrqY4K9QKbwTPJ0qY8K5vtW1bnm7YGNMybvgty!1064548527"
+                    }
+                  ],
+                  "responseTime": "106",
+                  "body": "{\"jsonapi\":{\"version\":\"1.0\"},\"data\":{\"id\":\"me\",\"type\":\"users\",\"attributes\":{\"title\":\"Mr\",\"email\":\"renewalvppqas04@bgdigitaltest.co.uk\",\"first-name\":\"Renewals\",\"role-profile-name\":\"Super User\",\"permissions\":[\"meter-readings\",\"invoices\",\"payments\",\"renewals\",\"manage-users\",\"add-additional-accounts\",\"paperless-billing\"],\"last-name\":\"VPP\"},\"relationships\":{\"contract-accounts\":{\"links\":{\"related\":\"/api/secure/business/contract-accounts\"}}}},\"links\":{\"self\":\"/api/secure/business/users/me\"}}"
+                }
+              ]
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "97c55f31-6e6c-49c0-af20-9f1e7b7c0c61",
+          "name": "Login Copy",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "3bb3dba5-1bc9-4ee3-9b94-88daf20b9be4",
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "postman.setGlobalVariable(\"email\", \"tester52@tester.com\");",
+                      "postman.setGlobalVariable(\"password\", \"password12\");",
+                      "",
+                      ""
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Test responseCode - 200\"] = responseCode.code == \"200\";",
+                      "",
+                      "if (responseCode.code === 200) {",
+                      "    ",
+                      "    var JSESSIONID = postman.getResponseCookie(\"JSESSIONID\").value;",
+                      "    postman.setEnvironmentVariable(\"JSessionid\", JSESSIONID);",
+                      "    ",
+                      "    var response = JSON.parse(responseBody);",
+                      "    var data=response.data;",
+                      "    var attributes= response.data.attributes;",
+                      "    ",
+                      "    tests[\"Test id - me\"] = data['id'] == \"me\";",
+                      "    tests[\"Test type - login-sessions\"] = data['type'] == \"login-sessions\";",
+                      "    tests[\"Test email - \" + attributes['email'] + \" is not null\"] = attributes['email'] !== null;",
+                      "    tests[\"Test last-login-timestamp is not null\"] = attributes['last-login-timestamp'] !== null;",
+                      "    tests[\"Test max-session-inactive-interval - 1200\"] = attributes['max-session-inactive-interval'] == \"1200\";",
+                      "}",
+                      "  ",
+                      "else postman.setNextRequest(null);",
+                      "  ",
+                      "console.log",
+                      "",
+                      "",
+                      "",
+                      "",
+                      "",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Host",
+                    "value": "{{host}}"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "{{origin}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"data\": {\r\n    \"type\": \"login-sessions\",\r\n    \"attributes\": {\r\n      \"email\" : \"{{email}}\",\r\n      \"password\" :  \"{{password}}\"\r\n    }\r\n  }\r\n}"
+                },
+                "url": "{{url}}/login-sessions",
+                "description": "Login"
+              },
+              "response": [
+                {
+                  "id": "b26986fe-8ca6-474d-af93-2a2e55c8e519",
+                  "name": "21/08/17",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Host",
+                        "value": "{{host}}"
+                      },
+                      {
+                        "key": "Origin",
+                        "value": "{{origin}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.api+json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"data\": {\r\n    \"type\": \"login-sessions\",\r\n    \"attributes\": {\r\n      \"email\" : \"{{email}}\",\r\n      \"password\" :  \"{{password}}\"\r\n    }\r\n  }\r\n}"
+                    },
+                    "url": "{{url}}/login-sessions",
+                    "description": "Login"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": ""
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close",
+                      "name": "Connection",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Encoding",
+                      "value": "gzip",
+                      "name": "Content-Encoding",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "181",
+                      "name": "Content-Length",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/vnd.api+json",
+                      "name": "Content-Type",
+                      "description": ""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 21 Aug 2017 15:46:39 GMT",
+                      "name": "Date",
+                      "description": ""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache/2.2.3 (Red Hat)",
+                      "name": "Server",
+                      "description": ""
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "BGBusiness_lastName=VPP;Path=/;Version=1",
+                      "name": "Set-Cookie",
+                      "description": ""
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "BGBusiness_Title=Mr;Path=/;Version=1",
+                      "name": "Set-Cookie",
+                      "description": ""
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Accept-Encoding,User-Agent",
+                      "name": "Vary",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN",
+                      "name": "X-Frame-Options",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Servlet/2.5 JSP/2.1",
+                      "name": "X-Powered-By",
+                      "description": ""
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "ukbaem"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "VPP"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "Mr"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": true,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "bdlSZh1WC7bpF9nrqY4K9QKbwTPJ0qY8K5vtW1bnm7YGNMybvgty!1064548527"
+                    }
+                  ],
+                  "responseTime": null,
+                  "body": "{\"jsonapi\":{\"version\":\"1.0\"},\"data\":{\"id\":\"me\",\"type\":\"login-sessions\",\"attributes\":{\"last-login-timestamp\":\"2017-08-21T17:46:39Z\",\"email\":\"renewalvppqas04@bgdigitaltest.co.uk\",\"max-session-inactive-interval\":1200}}}"
+                }
+              ]
+            },
+            {
+              "_postman_id": "1ec5a455-dafa-4913-823a-6de8b2ca47b0",
+              "name": "FPP_Users",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                      "",
+                      "if (responseCode.code === 200) {",
+                      "",
+                      "var response = JSON.parse(responseBody);",
+                      "//First Account",
+                      "var attributes = response.data.attributes;",
+                      "var lastName = attributes['last-name'];",
+                      "var title = attributes['title'];",
+                      "var firstName = attributes['first-name'];",
+                      "var emailid = attributes['email'];",
+                      "",
+                      "postman.setGlobalVariable (\"lastName\", lastName);",
+                      "postman.setGlobalVariable (\"title\", title);",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Host",
+                    "value": "{{host}}"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "{{origin}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  },
+                  {
+                    "key": "JSESSIONID",
+                    "value": "{{JSessionid}}"
+                  }
+                ],
+                "body": {},
+                "url": "{{url}}/users/me"
+              },
+              "response": [
+                {
+                  "id": "5f18d5d9-053f-4839-bb88-b5c8783d63d6",
+                  "name": "21/08/17",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Host",
+                        "value": "{{host}}"
+                      },
+                      {
+                        "key": "Origin",
+                        "value": "{{origin}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.api+json"
+                      },
+                      {
+                        "key": "JSESSIONID",
+                        "value": "{{JSessionid}}"
+                      }
+                    ],
+                    "body": {},
+                    "url": "{{url}}/users/me"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": ""
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close",
+                      "name": "Connection",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Encoding",
+                      "value": "gzip",
+                      "name": "Content-Encoding",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "300",
+                      "name": "Content-Length",
+                      "description": ""
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/vnd.api+json",
+                      "name": "Content-Type",
+                      "description": ""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 21 Aug 2017 15:46:53 GMT",
+                      "name": "Date",
+                      "description": ""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache/2.2.3 (Red Hat)",
+                      "name": "Server",
+                      "description": ""
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Accept-Encoding,User-Agent",
+                      "name": "Vary",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN",
+                      "name": "X-Frame-Options",
+                      "description": ""
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Servlet/2.5 JSP/2.1",
+                      "name": "X-Powered-By",
+                      "description": ""
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "ukbaem"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "VPP"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": false,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "Mr"
+                    },
+                    {
+                      "expires": "Invalid Date",
+                      "httpOnly": true,
+                      "domain": "193.67.163.50",
+                      "path": "/",
+                      "secure": false,
+                      "value": "bdlSZh1WC7bpF9nrqY4K9QKbwTPJ0qY8K5vtW1bnm7YGNMybvgty!1064548527"
+                    }
+                  ],
+                  "responseTime": null,
+                  "body": "{\"jsonapi\":{\"version\":\"1.0\"},\"data\":{\"id\":\"me\",\"type\":\"users\",\"attributes\":{\"title\":\"Mr\",\"email\":\"renewalvppqas04@bgdigitaltest.co.uk\",\"first-name\":\"Renewals\",\"role-profile-name\":\"Super User\",\"permissions\":[\"meter-readings\",\"invoices\",\"payments\",\"renewals\",\"manage-users\",\"add-additional-accounts\",\"paperless-billing\"],\"last-name\":\"VPP\"},\"relationships\":{\"contract-accounts\":{\"links\":{\"related\":\"/api/secure/business/contract-accounts\"}}}},\"links\":{\"self\":\"/api/secure/business/users/me\"}}"
+                }
+              ]
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "1bc546dd-ed60-e301-f72d-f4b6d0f3fd2a",
+          "name": "Pricesummary_Gas&Elec",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "c0a14f45-63ac-5801-cd1e-2ee493edc46b",
+              "name": "MeterFinder_udprn",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "postman.clearGlobalVariables();",
+                      "//udprn for 5 QUINCY ROAD EGHAM SURREY TW20 9JJ",
+                      "pm.globals.set(\"var_fuelgas\", \"gas\");",
+                      "pm.globals.set(\"var_fuelelec\", \"electricity\");",
+                      "pm.globals.set(\"var_udprn\", \"25598266\");",
+                      "pm.globals.set(\"var_cma_gas_consumption\", \"24000\");",
+                      "pm.globals.set(\"var_cma_elec_consumption\", \"12000\");"
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Test responseCode - 200\"] = responseCode.code == \"200\";",
+                      "",
+                      "if (responseCode.code == 200)",
+                      "{",
+                      "var response = JSON.parse(responseBody);",
+                      "var meterslength = response.data.length;",
+                      "var elec_data = response.data[0];",
+                      "var gas_data = response.data[1];",
+                      "",
+                      "var elec_attributes= elec_data.attributes;",
+                      "var gas_attributes= gas_data.attributes;",
+                      "",
+                      "var elecJSON = {",
+                      "                \"meter-point-reference-number\": null,",
+                      "                \"meter-type\": \"active\",",
+                      "                \"match-indicator\": \"100\",",
+                      "                \"address-as-string\": \"5 QUINCY ROAD EGHAM SURREY TW20 9JJ\",",
+                      "                \"profile-class\": \"01\",",
+                      "                \"utility-type\": \"electricity\",",
+                      "                \"mpan-core\": \"**********802\",",
+                      "                \"energisation-status\": \"energised\"",
+                      "            };",
+                      "var gasJSON = {",
+                      "                \"meter-point-reference-number\": \"*******602\",",
+                      "                \"meter-type\": null,",
+                      "                \"match-indicator\": \"100\",",
+                      "                \"address-as-string\": \"5 QUINCY ROAD EGHAM TW20 9JJ\",",
+                      "                \"profile-class\": null,",
+                      "                \"utility-type\": \"gas\",",
+                      "                \"mpan-core\": null,",
+                      "                \"energisation-status\": null",
+                      "            };",
+                      "",
+                      "tests[\"Test Total number of meters returned is 2\"] = meterslength ==2;",
+                      "",
+                      "tests[\"Test Elec meter Type is : \" + elec_data.type] = elec_data.type ==\"meters\";",
+                      "tests[\"Test Elec meter id is : \" + elec_data.id] = elec_data.id !==null;",
+                      "tests[\"Elec meters details are matched\" + elecJSON] =_.isEqual(elecJSON, elec_attributes);",
+                      "",
+                      "tests[\"Test Gas meter Type is : \" + gas_data.type] = gas_data.type ==\"meters\";",
+                      "tests[\"Test Gas meter id is : \" + gas_data.id] = gas_data.id !==null;",
+                      "tests[\"Gas meters details are matched\"] =_.isEqual(gasJSON, gas_attributes)",
+                      "",
+                      "}",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "https://{{env}}/api/secure/business/addresses/meters?udprn={{var_udprn}}",
+                  "protocol": "https",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "api",
+                    "secure",
+                    "business",
+                    "addresses",
+                    "meters"
+                  ],
+                  "query": [
+                    {
+                      "key": "udprn",
+                      "value": "{{var_udprn}}",
+                      "equals": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "67d0ad12-3ea4-0b31-36eb-084b7538e8ca",
+              "name": "Sites_gas",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                      "",
+                      "if (responseCode.code === 201) {",
+                      "",
+                      "var response = JSON.parse(responseBody);",
+                      "var attributes = response.data.attributes;",
+                      "var siteJSON = {",
+                      "            \"unique-delivery-point-ref\": \"25598266\",",
+                      "            \"annual-consumption\": \"24000\",",
+                      "            \"fuel\": \"gas\",",
+                      "            \"meter-point-number\": null",
+                      "        };",
+                      "",
+                      "",
+                      "var type = response.data.type;",
+                      "var id = response.data.id;",
+                      "",
+                      "",
+                      "tests[\"type is : \" + type] = type == \"sites\";",
+                      "tests[\"Site Id is not null : \" + id] = id !== null;",
+                      "tests[\"Elec site details are matched\"]= _.isEqual(siteJSON, attributes);",
+                      "",
+                      "pm.globals.set(\"cma_gas_siteid\", id);",
+                      "",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  },
+                  {
+                    "key": "JSESSIONID",
+                    "value": "{{JSessionid}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"fuel\": {{var_fuelgas}},\n      \"unique-delivery-point-ref\": {{var_udprn}},\n      \"meter-point-number\": null,\n      \"annual-consumption\": {{var_cma_gas_consumption}}\n    },\n    \"type\": \"sites\"\n  }\n}"
+                },
+                "url": "https://{{env}}/api/secure/business/sites"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "0c476840-7ccf-deb5-6e95-ed3507242833",
+              "name": "PriceCall_Gas&Elec",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                      "",
+                      "if (responseCode.code === 201) {",
+                      "",
+                      "var response = JSON.parse(responseBody);",
+                      "var attributes = response.data.attributes;",
+                      "var products = response.data.attributes.products[0];",
+                      "",
+                      "var type = response.data.type;",
+                      "var id = response.data.id;",
+                      "var contractstartdate = products['contract-details']['start-date'];",
+                      "",
+                      "tests[\"type is : \" + type] = type == \"prices\";",
+                      "tests[\"Site Id is not null : \" + id] = id !== null;",
+                      "pm.globals.set(\"PriceReferenceNumber\", id);",
+                      "pm.globals.set(\"ContractStartDate\", contractstartdate);",
+                      "",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  },
+                  {
+                    "key": "JSESSIONID",
+                    "value": "{{JSessionid}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"postcode\": null,\n      \"sites\": [\n       {{cma_elec_siteid}},\n       {{cma_gas_siteid}}\n      ]\n    },\n    \"type\": \"prices\"\n  }\n}"
+                },
+                "url": "https://{{env}}/api/secure/business/prices"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "7c3bd39a-b44e-098f-d272-6bec28112afd",
+              "name": "Sites_elec",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                      "",
+                      "if (responseCode.code === 201) {",
+                      "",
+                      "var response = JSON.parse(responseBody);",
+                      "var attributes = response.data.attributes;",
+                      "var siteJSON = {",
+                      "            \"unique-delivery-point-ref\": \"25598266\",",
+                      "            \"annual-consumption\": \"12000\",",
+                      "            \"fuel\": \"electricity\",",
+                      "            \"meter-point-number\": null",
+                      "        };",
+                      "",
+                      "",
+                      "var type = response.data.type;",
+                      "var id = response.data.id;",
+                      "",
+                      "",
+                      "tests[\"type is : \" + type] = type == \"sites\";",
+                      "tests[\"Site Id is not null : \" + id] = id !== null;",
+                      "tests[\"Elec site details are matched\"]= _.isEqual(siteJSON, attributes);",
+                      "",
+                      "pm.globals.set(\"cma_elec_siteid\", id);",
+                      "",
+                      "}",
+                      "",
+                      "",
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/vnd.api+json"
+                  },
+                  {
+                    "key": "JSESSIONID",
+                    "value": "{{JSessionid}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"fuel\": {{var_fuelelec}},\n      \"unique-delivery-point-ref\": {{var_udprn}},\n      \"meter-point-number\": null,\n      \"annual-consumption\": {{var_cma_elec_consumption}}\n    },\n    \"type\": \"sites\"\n  }\n}"
+                },
+                "url": "https://{{env}}/api/secure/business/sites"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "afef7aca-1345-bbe3-6aaa-ce52511b1a5b",
+          "name": "PricetoQuote_Elec1Year",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.globals.set(\"var_firstname\", \"Elec\");",
+                  "pm.globals.set(\"var_lastname\", \"Oneyear\");",
+                  "pm.globals.set(\"var_businessname\", \"Tesco\");",
+                  "pm.globals.set(\"var_telephone\", \"0192837465\");",
+                  "pm.globals.set(\"var_emailid\", \"tester52@tester.com\");",
+                  "pm.globals.set(\"var_productname_new_1yearelec\", \"1 Year New Customer Price\");",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var quoteJSON =  {",
+                  "                    \"contract-account-number\": \"602559230\",",
+                  "                    \"quote-items\": [",
+                  "                        {",
+                  "                            \"duration\": \"1\",",
+                  "                            \"discounts\": [",
+                  "                                {",
+                  "                                    \"type\": \"direct-debit-discount\",",
+                  "                                    \"rate\": \"7.000\",",
+                  "                                    \"unit\": \"%\"",
+                  "                                }",
+                  "                            ],",
+                  "                            \"price-plan\": null,",
+                  "                            \"unit-rates\": [",
+                  "                                {",
+                  "                                    \"type\": \"Unit Charge\",",
+                  "                                    \"rate\": \"17.290\",",
+                  "                                    \"unit\": \"per kWh\"",
+                  "                                }",
+                  "                            ],",
+                  "                            \"standing-charge\": {",
+                  "                                \"type\": \"Standing charge\",",
+                  "                                \"rate\": \"27.630\",",
+                  "                                \"unit\": \"p per day\"",
+                  "                            },",
+                  "                            \"annual-price\": \"2,175.65\",",
+                  "                            \"annual-consumption\": null",
+                  "                        }",
+                  "                    ],",
+                  "                    \"site-address\": \"5 QUINCY ROAD EGHAM TW20 9JJ GB\"",
+                  "                };",
+                  "",
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "",
+                  "if (responseCode.code === 201) {",
+                  "",
+                  "var response = JSON.parse(responseBody);",
+                  "var attributes = response.data.attributes;",
+                  "var sites = response.data.attributes.sites[0];",
+                  "",
+                  "var type = response.data.type;",
+                  "var id = response.data.id;",
+                  "",
+                  "tests[\"type is : \" + type] = type == \"quotes\";",
+                  "tests[\"Quote Id is not null : \" + id] = id !== null;",
+                  "tests[\"Elec site details are matched\"]= _.isEqual(quoteJSON, sites);",
+                  "",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "JSESSIONID",
+                "value": "{{JSessionid}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"data\": {\r\n    \"attributes\": {\r\n      \"fuel\": {{var_fuelelec}},\r\n      \"contract-start-date\": \"{{ContractStartDate}}\",\r\n      \"customer-details\": {\r\n        \"first-name\": {{var_firstname}},\r\n        \"last-name\": {{var_lastname}},\r\n        \"telephone-number\": {{var_telephone}},\r\n        \"email\": {{var_emailid}},\r\n        \"business-name\": {{var_businessname}}\r\n      },\r\n      \"quote-expiry-date\": null,\r\n      \"payment-method\": null,\r\n      \"price-reference-number\": {{PriceReferenceNumber}},\r\n      \"product-name\": \"{{var_productname_new_1yearelec}}\",\r\n      \"sites\": [\r\n        {{cma_elec_siteid}}\r\n      ]\r\n    },\r\n    \"type\": \"quotes\"\r\n  }\r\n}\r\n"
+            },
+            "url": "https://{{env}}/api/secure/business/quotes"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "10973392-0bd0-8f63-2148-b76b0a24e6c2",
+          "name": "PricetoQuote_Gas1Year",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "33e7bac0-978e-424b-a147-ce7e196469b1",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.globals.set(\"var_firstname\", \"Gas\");",
+                  "pm.globals.set(\"var_lastname\", \"Oneyear\");",
+                  "pm.globals.set(\"var_businessname\", \"Tesco\");",
+                  "pm.globals.set(\"var_telephone\", \"0192837465\");",
+                  "pm.globals.set(\"var_emailid\", \"tester52@tester.com\");",
+                  "pm.globals.set(\"var_productname_new_1yearelec\", \"1 Year New Customer Price\");",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "49243964-ec44-44d4-9a74-b283df3c8e1d",
+                "type": "text/javascript",
+                "exec": [
+                  "var quoteJSON =  {",
+                  "                    \"contract-account-number\": \"602559230\",",
+                  "                    \"quote-items\": [",
+                  "                        {",
+                  "                            \"duration\": \"1\",",
+                  "                            \"discounts\": [",
+                  "                                {",
+                  "                                    \"type\": \"direct-debit-discount\",",
+                  "                                    \"rate\": \"7.000\",",
+                  "                                    \"unit\": \"%\"",
+                  "                                }",
+                  "                            ],",
+                  "                            \"price-plan\": null,",
+                  "                            \"unit-rates\": [",
+                  "                                {",
+                  "                                    \"type\": \"Unit Charge\",",
+                  "                                    \"rate\": \"17.290\",",
+                  "                                    \"unit\": \"per kWh\"",
+                  "                                }",
+                  "                            ],",
+                  "                            \"standing-charge\": {",
+                  "                                \"type\": \"Standing charge\",",
+                  "                                \"rate\": \"27.630\",",
+                  "                                \"unit\": \"p per day\"",
+                  "                            },",
+                  "                            \"annual-price\": \"2,175.65\",",
+                  "                            \"annual-consumption\": null",
+                  "                        }",
+                  "                    ],",
+                  "                    \"site-address\": \"5 QUINCY ROAD EGHAM TW20 9JJ GB\"",
+                  "                };",
+                  "",
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "",
+                  "if (responseCode.code === 201) {",
+                  "",
+                  "var response = JSON.parse(responseBody);",
+                  "var attributes = response.data.attributes;",
+                  "var sites = response.data.attributes.sites[0];",
+                  "",
+                  "var type = response.data.type;",
+                  "var id = response.data.id;",
+                  "",
+                  "tests[\"type is : \" + type] = type == \"quotes\";",
+                  "tests[\"Quote Id is not null : \" + id] = id !== null;",
+                  "tests[\"Gas 1 Year Quote Prices are matched\"]= _.isEqual(quoteJSON, sites);",
+                  "",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"data\": {\r\n    \"attributes\": {\r\n      \"fuel\": {{var_fuelgas}},\r\n      \"contract-start-date\": \"{{ContractStartDate}}\",\r\n      \"customer-details\": {\r\n        \"first-name\": {{var_firstname}},\r\n        \"last-name\": {{var_lastname}},\r\n        \"telephone-number\": {{var_telephone}},\r\n        \"email\": {{var_emailid}},\r\n        \"business-name\": {{var_businessname}}\r\n      },\r\n      \"quote-expiry-date\": null,\r\n      \"payment-method\": null,\r\n      \"price-reference-number\": {{PriceReferenceNumber}},\r\n      \"product-name\": \"{{var_productname_new_1yearelec}}\",\r\n      \"sites\": [\r\n        {{cma_gas_siteid}}\r\n      ]\r\n    },\r\n    \"type\": \"quotes\"\r\n  }\r\n}\r\n"
+            },
+            "url": "https://{{env}}/api/secure/business/quotes"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

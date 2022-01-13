@@ -1,0 +1,61 @@
+[
+  {
+    "elements": [
+      {
+        "id": "test;to-verify-whether-able-to-open-browser-and-navigate-to-google",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "To verify whether able to open browser and navigate to google",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "open the browser",
+            "result": {
+              "status": "passed",
+              "duration": 8277396506
+            },
+            "line": 4,
+            "match": {
+              "location": "/home/administrator/Documents/Protractor/TestFolder/steps/test.steps.js:7"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "the google page is loaded",
+            "result": {
+              "status": "passed",
+              "duration": 176890
+            },
+            "line": 5,
+            "match": {
+              "location": "/home/administrator/Documents/Protractor/TestFolder/steps/test.steps.js:14"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "search button should be displayed",
+            "result": {
+              "status": "passed",
+              "duration": 89750
+            },
+            "line": 6,
+            "match": {
+              "location": "/home/administrator/Documents/Protractor/TestFolder/steps/test.steps.js:20"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "test",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Test",
+    "tags": [],
+    "uri": "/home/administrator/Documents/Protractor/TestFolder/feature/test.feature"
+  }
+]

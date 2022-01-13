@@ -1,0 +1,84 @@
+[
+  {
+    "elements": [
+      {
+        "id": "test;to-verify-whether-able-to-fetch-the-addresses",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "To verify whether able to fetch the addresses",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user is an Insurance home page",
+            "result": {
+              "status": "passed",
+              "duration": 4733246015
+            },
+            "line": 4,
+            "match": {
+              "location": "/home/manikandan/Documents/Backup/documents/Protractor/TestFolder/steps/test.steps.js:10"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "user clicks continue button",
+            "result": {
+              "status": "passed",
+              "duration": 6466304191
+            },
+            "line": 5,
+            "match": {
+              "location": "/home/manikandan/Documents/Backup/documents/Protractor/TestFolder/steps/test.steps.js:17"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "the user should see the next page",
+            "result": {
+              "status": "passed",
+              "duration": 1098958193
+            },
+            "line": 6,
+            "match": {
+              "location": "/home/manikandan/Documents/Backup/documents/Protractor/TestFolder/steps/test.steps.js:22"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 371071
+            },
+            "hidden": true,
+            "match": {
+              "location": "/home/manikandan/Documents/Backup/documents/Protractor/TestFolder/node_modules/protractor-cucumber-framework/lib/resultsCapturer.js:50"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "test",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Test",
+    "tags": [],
+    "uri": "/home/manikandan/Documents/Backup/documents/Protractor/TestFolder/feature/test.feature",
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "88.0.4324.150"
+      },
+      "device": "",
+      "platform": {
+        "name": "",
+        "version": ""
+      }
+    }
+  }
+]

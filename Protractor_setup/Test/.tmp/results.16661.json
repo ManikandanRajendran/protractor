@@ -1,0 +1,46 @@
+[
+  {
+    "elements": [
+      {
+        "id": "learn-as-much-as-you-can;testing-the-framework",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "testing the framework",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "open the browser and load url",
+            "result": {
+              "status": "pending"
+            },
+            "line": 4,
+            "match": {
+              "location": "/home/manikandan/Documents/setingup/Test/steps/test.steps.js:5"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 677120
+            },
+            "hidden": true,
+            "match": {
+              "location": "/home/manikandan/Documents/setingup/node_modules/protractor-cucumber-framework/lib/resultsCapturer.js:50"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "learn-as-much-as-you-can",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "learn as much as you can",
+    "tags": [],
+    "uri": "/home/manikandan/Documents/setingup/Test/feature/test.feature"
+  }
+]

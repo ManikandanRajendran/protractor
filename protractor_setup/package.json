@@ -1,0 +1,18 @@
+{
+  "name": "protractor_setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "Test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "cucumber-html-report": "^0.6.5",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^6.2.1"
+  }
+}
